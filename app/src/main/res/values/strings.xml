@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">Trivia Quest</string>
+    <string name="salutation">Welcome</string>
+    <string name="please_wait">please wait</string>
+    <string name="enter_name">Please enter your name</string>
+    <string name="hint_name">Name</string>
+    <string name="start">start</string>
+    <string name="categories">Categories</string>
+    <string name="content_description">image</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="submit">Submit</string>
+
+</resources>

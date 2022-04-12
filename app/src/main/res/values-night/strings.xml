@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="salutation">Welcome</string>
+    <string name="enter_name">Please enter your name</string>
+    <string name="hint_name">Name</string>
+</resources>

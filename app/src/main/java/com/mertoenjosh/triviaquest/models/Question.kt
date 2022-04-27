@@ -4,7 +4,7 @@ data class Question(
     val category: String,
     val id: String,
     val correctAnswer: String,
-    val inCorrectAnswer: ArrayList<String>,
+    val incorrectAnswers: ArrayList<String>,
     val question: String,
     val tags: ArrayList<String>,
     val type: String

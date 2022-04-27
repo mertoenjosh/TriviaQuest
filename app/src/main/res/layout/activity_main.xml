@@ -29,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/primary_layout_padding">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,19 +55,24 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="@string/hint_name" />
+                    android:hint="@string/hint_name"
+                    android:imeOptions="actionGo"
+                    android:inputType="text"
+                    android:textColorHint="@color/faded_text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btnStart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:backgroundTint="@null"
+                android:minHeight="@dimen/btn_min_height"
                 android:text="@string/start"
                 android:textSize="@dimen/secondary_text_size"
-                android:padding="@dimen/small_layout_padding"
+                android:paddingTop="@dimen/small_layout_padding"
+                android:paddingBottom="@dimen/small_layout_padding"
                 android:layout_margin="@dimen/primary_layout_margin"
                 />
 

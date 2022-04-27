@@ -5,8 +5,10 @@
       <map>
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_difficulty.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/activity_fetch.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1814814814814815" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/activity_results.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/item_select_category.xml" value="0.19791666666666666" />
       </map>

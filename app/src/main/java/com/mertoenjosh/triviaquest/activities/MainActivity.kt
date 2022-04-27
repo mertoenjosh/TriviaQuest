@@ -1,34 +1,23 @@
 package com.mertoenjosh.triviaquest.activities
 
-import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import com.mertoenjosh.triviaquest.FetchQuestionsFromAPI
+import android.widget.Button
 import com.mertoenjosh.triviaquest.R
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var progressDialog: Dialog
-
+    private lateinit var btnStart: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        btnStart = findViewById(R.id.btnStart)
 
-        FetchQuestionsFromAPI(this).execute()
+        val intent = Intent(this, CategoryActivity::class.java)
+        btnStart.setOnClickListener {
+            startActivity(intent)
+        }
+
+        // FetchQuestionsFromAPI(this).execute()
     }
-
-    fun showProgressDialog(text: String) {
-        progressDialog = Dialog(this)
-
-        progressDialog.setContentView(R.layout.custom_progress_dialog)
-        progressDialog.findViewById<TextView>(R.id.tvPleaseWait).text = text
-
-        progressDialog.show()
-    }
-
-    fun hideProgressDialog() {
-        progressDialog.cancel()
-        progressDialog.dismiss()
-    }
-
 }

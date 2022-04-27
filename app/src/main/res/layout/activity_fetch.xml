@@ -5,25 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.CategoryActivity" >
+    tools:context=".activities.FetchActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.TriviaQuest.AppBarOverlay">
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarCategories"
+            android:id="@+id/toolbarFetchActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.TriviaQuest.PopupOverlay"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSelectCategory"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_select_category"/>
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnStartQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/btn_min_height"
+            android:text="BEGIN"
+            android:textSize="@dimen/primary_text_size"
+            android:layout_gravity="bottom"
+            android:padding="@dimen/primary_layout_padding"
+            android:layout_margin="@dimen/primary_layout_margin"
+            />
+
+    </LinearLayout>
+
 
 </LinearLayout>

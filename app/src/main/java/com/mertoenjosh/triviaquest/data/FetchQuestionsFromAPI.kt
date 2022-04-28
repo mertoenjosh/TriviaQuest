@@ -25,7 +25,7 @@ class FetchQuestionsFromAPI(
 )
     : AsyncTask<Void, Any, String>() {
     companion object {
-        const val TAG = "FetchQuestionsFrom"
+        const val TAG = "FetchQuestionsFromTAG"
     }
     override fun onPreExecute() {
         super.onPreExecute()
@@ -40,7 +40,7 @@ class FetchQuestionsFromAPI(
             val link = createURL(category, difficulty)
             val url = URL(link)
 
-            Log.d("${TAG}LINK", link)
+            Log.d("${TAG}", link)
 
             connection = url.openConnection() as HttpURLConnection
             result = readDataFromEndPoint(connection)
@@ -61,7 +61,6 @@ class FetchQuestionsFromAPI(
         activity.hideProgressDialog()
         if (result != null) {
             Constants.QUESTIONS = returnedQuestions(result)
-            Log.i("${TAG}Const", "${Constants.QUESTIONS}")
         } else {
             // TODO("implement a function to handle")
             Toast.makeText(activity, "Error Preparing Challenge", Toast.LENGTH_SHORT).show()

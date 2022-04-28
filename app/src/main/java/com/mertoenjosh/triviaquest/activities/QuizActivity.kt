@@ -1,12 +1,14 @@
 package com.mertoenjosh.triviaquest.activities
 
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import com.mertoenjosh.triviaquest.R
@@ -23,7 +25,9 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
 
     private val questionsList = Constants.QUESTIONS
     private var currentQuestionIndex = 0
-    private var selectedOption = 0
+    private var selectedOption = -1
+    private var indexOfCorrect = -1
+    private var correctAnswers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,14 +57,42 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v) {
-            tvChoiceOne -> selectedOptionView(tvChoiceOne, 1)
-            tvChoiceTwo -> selectedOptionView(tvChoiceTwo, 2)
-            tvChoiceThree -> selectedOptionView(tvChoiceThree, 3)
-            tvChoiceFour -> selectedOptionView(tvChoiceFour, 4)
+            tvChoiceOne -> selectedOptionView(tvChoiceOne, 0)
+            tvChoiceTwo -> selectedOptionView(tvChoiceTwo, 1)
+            tvChoiceThree -> selectedOptionView(tvChoiceThree, 2)
+            tvChoiceFour -> selectedOptionView(tvChoiceFour, 3)
 
             btnQuizSubmit -> {
-
+                if (selectedOption == indexOfCorrect) {
+                    correctAnswers++
+                    Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "TEST: Answer: $indexOfCorrect, Choice: $selectedOption")
+                    moveToNextQuestion()
+                } else {
+                    Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "TEST: Answer: $indexOfCorrect, Choice: $selectedOption")
+                    moveToNextQuestion()
+                }
             }
+        }
+    }
+
+    private fun moveToNextQuestion() {
+        currentQuestionIndex++
+        Log.d(TAG, "PRE: Answer: $indexOfCorrect, Choice: $selectedOption")
+        selectedOption = -1
+        indexOfCorrect = -1
+        Log.d(TAG, "POST: Answer: $indexOfCorrect, Choice: $selectedOption")
+        if (currentQuestionIndex < questionsList.size) {
+            if (currentQuestionIndex == questionsList.size - 1)
+                btnQuizSubmit.text = getString(R.string.btn_final_question_text)
+            setupQuiz()
+        } else {
+            val intent = Intent(this, ResultsActivity::class.java).apply {
+                putExtra(Constants.EXTRA_CORRECT_ANSWERS, correctAnswers)
+            }
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -75,6 +107,7 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         val question = questionsList[currentQuestionIndex]
         val list = question.incorrectAnswers + question.correctAnswer
         val choices = list.shuffled()
+        indexOfCorrect = choices.indexOf(question.correctAnswer)
         defaultOptionsView()
 
         tvQuestion.text = question.question
@@ -84,7 +117,6 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         tvChoiceThree.text = choices[2]
         tvChoiceFour.text = choices[3]
 
-        Log.i(TAG, "$choices")
     }
 
     private fun defaultOptionsView() {

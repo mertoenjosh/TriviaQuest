@@ -10,6 +10,7 @@ object Constants {
 
     const val EXTRA_CATEGORY = "EXTRA_CATEGORY"
     const val EXTRA_DIFFICULTY = "EXTRA_DIFFICULTY"
+    const val EXTRA_CORRECT_ANSWERS = "EXTRA_CORRECT_ANSWERS"
 
     const val EASY = "easy"
     const val MEDIUM = "medium"

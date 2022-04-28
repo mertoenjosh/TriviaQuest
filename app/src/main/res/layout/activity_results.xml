@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.ResultsActivity">
 
     <TextView
@@ -17,5 +18,11 @@
         android:padding="@dimen/primary_layout_padding"
         android:layout_margin="@dimen/primary_layout_margin"
         />
+
+    <TextView
+        android:id="@+id/tvDisplayResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
 </LinearLayout>

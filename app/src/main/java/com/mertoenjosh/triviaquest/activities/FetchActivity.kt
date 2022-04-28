@@ -25,7 +25,7 @@ class FetchActivity : BaseActivity() {
         val intent = Intent(this, QuizActivity::class.java).apply {
             putExtra(Constants.EXTRA_CATEGORY, category)
         }
-        btnStartQuiz.setOnClickListener { startActivity(intent) }
+        btnStartQuiz.setOnClickListener { startActivity(intent); finish() }
     }
 
     private fun makeString(str: String): String = str.lowercase()

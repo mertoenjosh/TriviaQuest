@@ -39,16 +39,19 @@ class DifficultyActivity : BaseActivity(), View.OnClickListener {
             tvDifficultyEasy -> {
                 intent.putExtra(Constants.EXTRA_DIFFICULTY, Constants.EASY)
                 startActivity(intent)
+                finish()
             }
 
             tvDifficultyMedium -> {
                 intent.putExtra(Constants.EXTRA_DIFFICULTY, Constants.MEDIUM)
                 startActivity(intent)
+                finish()
             }
 
             tvDifficultyHard -> {
                 intent.putExtra(Constants.EXTRA_DIFFICULTY, Constants.HARD)
                 startActivity(intent)
+                finish()
             }
         }
     }

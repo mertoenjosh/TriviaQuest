@@ -22,7 +22,9 @@
     <TextView
         android:id="@+id/tvDisplayResults"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        tools:text="text"/>
 
 </LinearLayout>

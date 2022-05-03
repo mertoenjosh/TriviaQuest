@@ -1,6 +1,6 @@
 # Trivia Quest 
 
-## *[Martin Thuo](www.twitter.com/mertoenjosh)*
+## *[Martin Thuo](https://twitter.com/mertoenjosh)*
 
 **Trivia Quest** is a quiz application with several categories and three levels of difficulties. Challenge yourself on how much you know be selecting either of the category.
 

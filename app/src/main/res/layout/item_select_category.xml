@@ -5,19 +5,25 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/primary_layout_padding"
+    android:layout_margin="@dimen/primary_layout_margin"
     android:gravity="center">
 
     <androidx.cardview.widget.CardView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:elevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/card_corner_radius">
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        >
 
         <ImageView
+            android:id="@+id/ivCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/content_description"
-            android:scaleType="centerCrop" />
+            android:padding="@dimen/large_layout_padding"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/ic_placeholder_24"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -27,5 +33,6 @@
         android:textSize="@dimen/primary_text_size"
         android:textStyle="bold"
         android:textColor="@color/primary_text_color"
+        android:padding="@dimen/small_layout_padding"
         tools:text="Category"/>
 </LinearLayout>

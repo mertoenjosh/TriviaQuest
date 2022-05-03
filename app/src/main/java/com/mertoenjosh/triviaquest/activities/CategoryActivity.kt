@@ -18,12 +18,12 @@ class CategoryActivity : BaseActivity() {
         toolbarCategories = findViewById(R.id.toolbarCategories)
         setupToolbar(toolbarCategories, getString(R.string.title_categories))
         rvSelectCategory = findViewById(R.id.rvSelectCategory)
-        setupRV(rvSelectCategory, categories())
+        setupRV(rvSelectCategory, categories(), icons())
     }
 
-    private fun setupRV(rv: RecyclerView, categories: ArrayList<String>) {
+    private fun setupRV(rv: RecyclerView, categories: ArrayList<String>, icons: ArrayList<Int>) {
         rv.layoutManager = GridLayoutManager(this, 2)
-        val adapter = SelectCategoryItemAdapter(this, categories)
+        val adapter = SelectCategoryItemAdapter(this, categories, icons)
         rv.adapter = adapter
 
         adapter.setOnItemClickListener( object : SelectCategoryItemAdapter.OnItemClickListener {
@@ -37,16 +37,33 @@ class CategoryActivity : BaseActivity() {
 
     private fun categories(): ArrayList<String> {
         val categories: ArrayList<String> = ArrayList()
-        categories.add("Arts & Literature")
-        categories.add("Film & TV")
-        categories.add("Food & Drink")
-        categories.add("General & Knowledge")
-        categories.add("Geography")
-        categories.add("History")
-        categories.add("Music")
-        categories.add("Science")
-        categories.add("Society and Culture")
-        categories.add("Sport and Leisure")
+        categories.add(0,"Arts & Literature")
+        categories.add(1, "Film & TV")
+        categories.add(2, "Food & Drink")
+        categories.add(3, "General Knowledge")
+        categories.add(4, "Geography")
+        categories.add(5, "History")
+        categories.add(6, "Music")
+        categories.add(7, "Science")
+        categories.add(8, "Society & Culture")
+        categories.add(9, "Sport & Leisure")
         return categories
+    }
+
+    private fun icons(): ArrayList<Int> {
+        val icons: ArrayList<Int> = ArrayList()
+
+        icons.add(0, R.drawable.ic_book_24)
+        icons.add(1, R.drawable.ic_movie_24)
+        icons.add(2, R.drawable.ic_foods_24)
+        icons.add(3, R.drawable.ic_general_24)
+        icons.add(4, R.drawable.ic_geo_24)
+        icons.add(5, R.drawable.ic_history_edu_24)
+        icons.add(6, R.drawable.ic_music_note_24)
+        icons.add(7, R.drawable.ic_biotech_24)
+        icons.add(8, R.drawable.ic_culture_24)
+        icons.add(9, R.drawable.ic_sports_24)
+
+        return icons
     }
 }

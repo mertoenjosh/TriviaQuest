@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--  CARDS   -->
     <dimen name="card_elevation">8dp</dimen>
     <dimen name="card_corner_radius">8dp</dimen>
+<!--  TEXTS  -->
     <dimen name="primary_heading_text_size">25sp</dimen>
-    <dimen name="primary_layout_margin">8dp</dimen>
     <dimen name="large_heading_text_size">30sp</dimen>
     <dimen name="secondary_text_size">20sp</dimen>
-    <dimen name="primary_layout_padding">8dp</dimen>
     <dimen name="primary_text_size">16sp</dimen>
+<!--  PADDINGS  -->
+    <dimen name="large_layout_padding">24dp</dimen>
+    <dimen name="primary_layout_padding">8dp</dimen>
     <dimen name="small_layout_padding">4dp</dimen>
+<!--  MARGINS  -->
+    <dimen name="large_layout_margin">24dp</dimen>
+    <dimen name="primary_layout_margin">8dp</dimen>
+    <dimen name="small_layout_margin">4dp</dimen>
+<!--  OTHERS  -->
     <dimen name="btn_min_height">56dp</dimen>
+
 </resources>

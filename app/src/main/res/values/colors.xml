@@ -7,12 +7,27 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="secondary_text_color">#7A8089</color>
-    <color name="primary_text_color">#363A43</color>
 
-    <color name="colorPrimary">#0B74E9</color>
-    <color name="colorPrimaryDark">#0B74E9</color>
-    <color name="colorAccent">#80B9F9</color>
-    <color name="faded_text">#7A8089</color>
+    <color name="one">#AB3CFC</color>
+    <color name="two">#7E6DF3</color>
+    <color name="three">#533b76</color>
+    <color name="four">#7C589A</color>
+    <color name="five">#9F8CCA</color>
+    <color name="six">#3E394C</color>
+
+    <color name="pri">#0B74E9</color>
+    <color name="sec">#80B9F9</color>
+
+    <color name="colorPrimary">@color/two</color>
+    <color name="colorPrimaryDark">@color/two</color>
+    <color name="colorAccent">@color/one</color>
+
+    <color name="primary_text_color">#363A43</color>
+    <color name="secondary_text_color">#7A8089</color>
+    <color name="faded_text">@color/secondary_text_color</color>
+
+    <color name="gradient_start_color">@color/one</color>
+    <color name="gradient_end_color">@color/two</color>
+
 
 </resources>

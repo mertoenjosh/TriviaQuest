@@ -68,6 +68,8 @@
                 android:id="@+id/btnStart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:backgroundTint="@null"
+                android:background="@drawable/shape_btn_background"
                 android:minHeight="@dimen/btn_min_height"
                 android:text="@string/start"
                 android:textSize="@dimen/secondary_text_size"

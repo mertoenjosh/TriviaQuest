@@ -20,6 +20,12 @@
             app:popupTheme="@style/Theme.TriviaQuest.PopupOverlay"/>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/pbTimeOut"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -66,8 +72,7 @@
             <TextView
                 android:id="@+id/tvChoiceOne"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/secondary_text_size"
                 android:padding="@dimen/small_layout_padding"
@@ -79,8 +84,7 @@
             <TextView
                 android:id="@+id/tvChoiceTwo"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/secondary_text_size"
                 android:padding="@dimen/small_layout_padding"
@@ -92,8 +96,7 @@
             <TextView
                 android:id="@+id/tvChoiceThree"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/secondary_text_size"
                 android:padding="@dimen/small_layout_padding"
@@ -105,8 +108,7 @@
             <TextView
                 android:id="@+id/tvChoiceFour"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="@dimen/secondary_text_size"
                 android:padding="@dimen/small_layout_padding"

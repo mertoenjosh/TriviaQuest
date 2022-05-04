@@ -29,5 +29,8 @@
     <color name="gradient_start_color">@color/one</color>
     <color name="gradient_end_color">@color/two</color>
 
+    <color name="gradient_start_color_cancel">#F08EFC</color>
+    <color name="gradient_end_color_cancel">#EE5166</color>
+
 
 </resources>

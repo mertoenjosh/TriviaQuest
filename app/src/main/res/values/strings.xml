@@ -15,5 +15,12 @@
     <string name="title_categories">Categories</string>
     <string name="title_difficulty">Difficulty</string>
     <string name="btn_final_question_text">Finish</string>
+    <string name="confirm_cancel">Are you sure?</string>
+    <string name="confirm_cancel_text">You will lose the current round. You\'ve come this far, are you sure you want to quit?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="answer_wrong">Wrong</string>
+    <string name="answer_correct">Correct</string>
+    <string name="answer_timeout">Time Out!</string>
 
 </resources>

@@ -51,7 +51,7 @@
                 android:text="@string/difficulty_easy"
                 android:gravity="center"
                 android:textSize="@dimen/large_heading_text_size"
-                android:textColor="@color/primary_text_color"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:padding="@dimen/primary_layout_padding"
                 android:background="@drawable/shape_btn_background"/>
@@ -75,7 +75,7 @@
                 android:focusable="true"
                 android:gravity="center"
                 android:textSize="@dimen/large_heading_text_size"
-                android:textColor="@color/primary_text_color"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:padding="@dimen/primary_layout_padding"
                 android:background="@drawable/shape_btn_background" />
@@ -99,7 +99,7 @@
                 android:focusable="true"
                 android:gravity="center"
                 android:textSize="@dimen/large_heading_text_size"
-                android:textColor="@color/primary_text_color"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:padding="@dimen/primary_layout_padding"
                 android:background="@drawable/shape_btn_background" />

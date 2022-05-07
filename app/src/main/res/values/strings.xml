@@ -22,5 +22,7 @@
     <string name="answer_wrong">Wrong</string>
     <string name="answer_correct">Correct</string>
     <string name="answer_timeout">Time Out!</string>
+    <string name="enter_name_error">Name cannot be blank</string>
+    <string name="finish">Finish</string>
 
 </resources>

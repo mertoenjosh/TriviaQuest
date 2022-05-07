@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Finish"
+        android:text="@string/finish"
         android:textSize="@dimen/large_heading_text_size"
         android:textColor="@color/primary_text_color"
         android:textStyle="bold"
@@ -20,11 +20,33 @@
         />
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Congratulations"
+        android:textSize="@dimen/large_heading_text_size"
+        android:padding="@dimen/primary_layout_padding"
+        tools:text="text"/>
+
+    <TextView
+        android:id="@+id/tvNameResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/secondary_text_size"
+        android:textStyle="bold"
+        android:padding="@dimen/primary_layout_padding"
+        tools:text="text"/>
+
+    <TextView
         android:id="@+id/tvDisplayResults"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/primary_text_size"
         android:textStyle="bold"
+        android:layout_margin="@dimen/primary_layout_margin"
+        android:padding="@dimen/primary_layout_padding"
         tools:text="text"/>
 
 </LinearLayout>

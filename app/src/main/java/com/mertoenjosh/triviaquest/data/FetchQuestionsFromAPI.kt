@@ -40,7 +40,7 @@ class FetchQuestionsFromAPI(
             val link = createURL(category, difficulty)
             val url = URL(link)
 
-            Log.d("${TAG}", link)
+            Log.d(TAG, link)
 
             connection = url.openConnection() as HttpURLConnection
             result = readDataFromEndPoint(connection)

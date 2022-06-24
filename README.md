@@ -1,23 +1,27 @@
 # Trivia Quest 
 
+## Author
+
 ## *[Martin Thuo](https://twitter.com/mertoenjosh)*
 
-**Trivia Quest** is a quiz application with several categories and three levels of difficulties. Challenge yourself on how much you know be selecting either of the category.
+**Trivia Quest** is a quiz application with several categories and three levels of difficulties. It uses retrofit to consume a RESTful API.
+Challenge yourself on how much you know be selecting either of the category.
 
 ## Features
 
 - Pure Kotlin
+- Retrofit and Gson converter
 
-## Video Walkthrough
+## Screenshots
 
-Here's a walkthrough of implemented user stories:
+![Welcome Screen](src/Screenshot_20220624_113929-welcome.png)
+![Category Screen](src/Screenshot_20220624_114005-cat.png)
+![Difficulty Screen](src/Screenshot_20220624_114032-diff.png)
+![Selected Screen](src/Screenshot_20220624_114057-sel.png)
+![Correct Screen](src/Screenshot_20220624_114134-cor.png)
+![Timeout Screen](src/Screenshot_20220624_114218-timout.png)
 
-<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 

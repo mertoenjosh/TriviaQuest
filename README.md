@@ -10,7 +10,8 @@ Challenge yourself on how much you know be selecting either of the category.
 ## Features
 
 - Pure Kotlin
-- Retrofit and Gson converter
+- Retrofit
+- Gson converter
 
 ## Screenshots
 

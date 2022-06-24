@@ -91,7 +91,19 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+
     private fun setupQuiz() {
+        Log.d(TAG, "setupQuiz: Setup Quiz")
+        options = ArrayList()
+        options.add(tvChoiceOne)
+        options.add(tvChoiceTwo)
+        options.add(tvChoiceThree)
+        options.add(tvChoiceFour)
+
+        btnQuizSubmit.isEnabled = true
+        for (btn in options)
+            btn.isEnabled = true
+
         pbTimeOut.visibility = View.VISIBLE
         startTimer(timerDuration)
         val question = questionsList[currentQuestionIndex]
@@ -109,6 +121,63 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    private fun moveToNextQuestion() {
+        Log.d(TAG, "moveToNextQuestion: called")
+        resetTimer()
+        pbTimeOut.visibility = View.INVISIBLE
+        selectedOption = -1
+        indexOfCorrect = -1
+
+        btnQuizSubmit.isEnabled = false
+        for (btn in options)
+            btn.isEnabled = false
+
+        Handler().postDelayed({
+            currentQuestionIndex++
+            if (currentQuestionIndex < questionsList.size) {
+                if (currentQuestionIndex == questionsList.size - 1)
+                    btnQuizSubmit.text = getString(R.string.btn_final_question_text)
+
+                setupQuiz()
+                Log.d(TAG, "POST: Answer: $indexOfCorrect, Choice: $selectedOption")
+            } else {
+                val intent = Intent(this, ResultsActivity::class.java).apply {
+                    putExtra(Constants.EXTRA_CORRECT_ANSWERS, correctAnswers)
+                }
+                startActivity(intent)
+                finish()
+            }
+        }, 1500)
+    }
+
+    private fun submitAnswer(message: String) {
+        Log.d(TAG, "submitAnswer: Submit")
+        if (selectedOption == indexOfCorrect) {
+            handleCorrect()
+        } else {
+            handleWrong(message)
+        }
+    }
+
+    private fun handleWrong(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        if (selectedOption >= 0)
+            options[selectedOption].background = ContextCompat.getDrawable(this, R.drawable.shape_wrong_option_background)
+        Log.d(TAG, "TEST: Answer: $indexOfCorrect, Choice: $selectedOption")
+        moveToNextQuestion()
+    }
+
+    private fun handleCorrect() {
+        Log.d(TAG, "handleCorrect: Correct")
+        correctAnswers++
+        options[selectedOption].background = ContextCompat.getDrawable(this, R.drawable.shape_correct_option_background)
+        Toast.makeText(this, getString(R.string.answer_correct), Toast.LENGTH_SHORT).show()
+        Log.d(TAG, "TEST: Answer: $indexOfCorrect, Choice: $selectedOption")
+        moveToNextQuestion()
+    }
+
+
+
     private fun startTimer(offSet: Int) {
         pbTimeOut.max = maxProgress
         answerTimer = object : CountDownTimer(offSet * 1000L, countDownInterval.toLong()) {
@@ -122,6 +191,36 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
             }
 
         }.start()
+    }
+
+
+    private fun resetTimer() {
+        Log.d(TAG, "resetTimer: Reset Timer")
+        answerTimer?.cancel()
+        answerTimer = null
+        pbTimeOut.progress = maxProgress
+    }
+
+
+    private fun defaultOptionsView() {
+        Log.d(TAG, "defaultOptionsView: Reset views")
+
+
+        for (op in options) {
+            // op.setTextColor(Color.parseColor((R.color.secondary_text_color).toString()))
+            op.setTextColor(ResourcesCompat.getColor(resources, R.color.secondary_text_color, null))
+            op.typeface = Typeface.DEFAULT
+            op.background = ContextCompat.getDrawable(this, R.drawable.shape_option_border_background)
+        }
+    }
+
+    private fun selectedOptionView(tv: TextView, choice: Int) {
+        defaultOptionsView()
+        Log.d(TAG, "selectedOptionView: selected $choice")
+        selectedOption = choice
+        tv.setTextColor(ResourcesCompat.getColor(resources, R.color.primary_text_color, null))
+        tv.setTypeface(tv.typeface, Typeface.BOLD)
+        tv.background = ContextCompat.getDrawable(this, R.drawable.shape_selected_option_border_background)
     }
 
     private fun confirmCancel(title: String, text: String) {
@@ -148,83 +247,6 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         customDialog.show()
     }
 
-    private fun resetTimer() {
-        answerTimer?.cancel()
-        answerTimer = null
-        pbTimeOut.progress = maxProgress
-    }
-
-    private fun submitAnswer(message: String) {
-        if (selectedOption == indexOfCorrect) {
-            handleCorrect()
-        } else {
-            handleWrong(message)
-        }
-    }
-
-    private fun handleWrong(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        options[selectedOption].background = ContextCompat.getDrawable(this, R.drawable.shape_wrong_option_background)
-        Log.d(TAG, "TEST: Answer: $indexOfCorrect, Choice: $selectedOption")
-        moveToNextQuestion()
-    }
-
-    private fun handleCorrect() {
-        correctAnswers++
-        options[selectedOption].background = ContextCompat.getDrawable(this, R.drawable.shape_correct_option_background)
-        Toast.makeText(this, getString(R.string.answer_correct), Toast.LENGTH_SHORT).show()
-        Log.d(TAG, "TEST: Answer: $indexOfCorrect, Choice: $selectedOption")
-        moveToNextQuestion()
-    }
-
-    private fun moveToNextQuestion() {
-        resetTimer()
-        pbTimeOut.visibility = View.INVISIBLE
-        selectedOption = -1
-        indexOfCorrect = -1
-        Log.d(TAG, "POST: Answer: $indexOfCorrect, Choice: $selectedOption")
-        for (btn in options)
-            btn.isEnabled = false
-
-        Handler().postDelayed({
-            currentQuestionIndex++
-            if (currentQuestionIndex < questionsList.size) {
-                if (currentQuestionIndex == questionsList.size - 1)
-                    btnQuizSubmit.text = getString(R.string.btn_final_question_text)
-                setupQuiz()
-            } else {
-                val intent = Intent(this, ResultsActivity::class.java).apply {
-                    putExtra(Constants.EXTRA_CORRECT_ANSWERS, correctAnswers)
-                }
-                startActivity(intent)
-                finish()
-            }
-        }, 1500)
-    }
-
-    private fun selectedOptionView(tv: TextView, choice: Int) {
-        defaultOptionsView()
-        selectedOption = choice
-        tv.setTextColor(ResourcesCompat.getColor(resources, R.color.primary_text_color, null))
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.background = ContextCompat.getDrawable(this, R.drawable.shape_selected_option_border_background)
-    }
-
-    private fun defaultOptionsView() {
-        options = ArrayList<TextView>()
-
-        options.add(tvChoiceOne)
-        options.add(tvChoiceTwo)
-        options.add(tvChoiceThree)
-        options.add(tvChoiceFour)
-
-        for (op in options) {
-            // op.setTextColor(Color.parseColor((R.color.secondary_text_color).toString()))
-            op.setTextColor(ResourcesCompat.getColor(resources, R.color.secondary_text_color, null))
-            op.typeface = Typeface.DEFAULT
-            op.background = ContextCompat.getDrawable(this, R.drawable.shape_option_border_background)
-        }
-    }
 
     companion object {
         const val TAG = "QuizActivityTAG"

@@ -9,12 +9,12 @@ import android.widget.Toast
 import com.mertoenjosh.triviaquest.R
 import com.mertoenjosh.triviaquest.utils.Constants
 
-class MainActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity() {
     private lateinit var btnStart: Button
     private lateinit var etName: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_intro)
         btnStart = findViewById(R.id.btnStart)
         etName = findViewById(R.id.etName)
 

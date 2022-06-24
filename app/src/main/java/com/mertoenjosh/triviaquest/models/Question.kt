@@ -1,5 +1,7 @@
 package com.mertoenjosh.triviaquest.models
 
+import java.io.Serializable
+
 data class Question(
     val category: String,
     val id: String,
@@ -8,7 +10,7 @@ data class Question(
     val question: String,
     val tags: ArrayList<String>,
     val type: String
-)
+): Serializable
 
 //{
 //    "category": "General Knowledge",

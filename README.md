@@ -14,12 +14,8 @@ Challenge yourself on how much you know be selecting either of the category.
 
 ## Screenshots
 
-<img src="src/Screenshot_20220624_113929-welcome.png" width=30% height=30%> 
-<img src="src/Screenshot_20220624_114005-cat.png" width=30% height=30%> 
-<img src="src/Screenshot_20220624_114032-diff.png" width=30% height=30%> 
-<img src="src/Screenshot_20220624_114057-sel.png" width=30% height=30%> 
-<img src="src/Screenshot_20220624_114134-cor.png" width=30% height=30%> 
-<img src="src/Screenshot_20220624_114218-timout.png" width=30% height=30%> 
+<img src="src/Screenshot_20220624_113929-welcome.png" width=30% height=30%> <img src="src/Screenshot_20220624_114005-cat.png" width=30% height=30%> <img src="src/Screenshot_20220624_114032-diff.png" width=30% height=30%> 
+<img src="src/Screenshot_20220624_114057-sel.png" width=30% height=30%> <img src="src/Screenshot_20220624_114134-cor.png" width=30% height=30%> <img src="src/Screenshot_20220624_114218-timout.png" width=30% height=30%> 
 
 [comment]: <> (<img src="https://user-images.githubusercontent.com/44951692/152506105-4f3c4983-1bcb-4be0-819e-110df9f81a50.jpg" width=30% height=30%> )
 

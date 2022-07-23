@@ -3,6 +3,7 @@ package com.mertoenjosh.triviaquest.activities
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -58,7 +59,7 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         val category = intent.getStringExtra(Constants.EXTRA_CATEGORY) ?: Constants.DEFAULT_CATEGORY
         setupToolbar(toolbarQuiz, "$category challenge")
 
-        if (!questionsList.isNullOrEmpty()) {
+        if (questionsList.isNotEmpty()) {
             setupQuiz()
             tvChoiceOne.setOnClickListener(this)
             tvChoiceTwo.setOnClickListener(this)
@@ -101,6 +102,7 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         options.add(tvChoiceFour)
 
         btnQuizSubmit.isEnabled = true
+        btnQuizSubmit.setTextColor(Color.WHITE)
         for (btn in options)
             btn.isEnabled = true
 
@@ -129,6 +131,7 @@ class QuizActivity : BaseActivity(), View.OnClickListener {
         indexOfCorrect = -1
 
         btnQuizSubmit.isEnabled = false
+        btnQuizSubmit.setTextColor(Color.LTGRAY)
         for (btn in options)
             btn.isEnabled = false
 

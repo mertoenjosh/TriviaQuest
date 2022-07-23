@@ -18,11 +18,16 @@ class IntroActivity : AppCompatActivity() {
         btnStart = findViewById(R.id.btnStart)
         etName = findViewById(R.id.etName)
 
+        // DEV hack
+        startActivity(Intent(this, CategoryActivity::class.java))
+
+
         val intent = Intent(this, CategoryActivity::class.java)
         btnStart.setOnClickListener {
             if (etName.text.toString().isNotEmpty()) {
-                startActivity(intent)
                 Constants.PLAYER_NAME = etName.text.toString()
+                startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, getString(R.string.enter_name_error), Toast.LENGTH_SHORT).show()
             }

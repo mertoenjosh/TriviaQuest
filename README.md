@@ -21,5 +21,5 @@ Challenge yourself on how much you know be selecting either of the category.
 
 ## Not Yet
 
-- [] Dark mode
-- [] State handling
+- [ ] Dark mode
+- [ ] State handling

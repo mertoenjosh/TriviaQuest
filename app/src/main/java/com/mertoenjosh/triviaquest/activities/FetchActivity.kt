@@ -2,21 +2,20 @@ package com.mertoenjosh.triviaquest.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import com.mertoenjosh.triviaquest.BuildConfig
 import com.mertoenjosh.triviaquest.R
 import com.mertoenjosh.triviaquest.models.Question
-import com.mertoenjosh.triviaquest.network.QuestService
+import com.mertoenjosh.triviaquest.services.QuestionService
+import com.mertoenjosh.triviaquest.services.ServiceBuilder
 import com.mertoenjosh.triviaquest.utils.Constants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
+
 
 class FetchActivity : BaseActivity() {
     private lateinit var toolbarFetchActivity: Toolbar
@@ -27,8 +26,6 @@ class FetchActivity : BaseActivity() {
         toolbarFetchActivity = findViewById(R.id.toolbarFetchActivity)
         btnStartQuiz = findViewById(R.id.btnStartQuiz)
         setupToolbar(toolbarFetchActivity,"BEGIN")
-
-        enableStrictMode()
 
         val category = intent.getStringExtra(Constants.EXTRA_CATEGORY) ?: Constants.DEFAULT_CATEGORY
         val difficulty = intent.getStringExtra(Constants.EXTRA_DIFFICULTY) ?: Constants.EASY
@@ -51,41 +48,23 @@ class FetchActivity : BaseActivity() {
         }
     }
 
-    private fun enableStrictMode() {
-        if (BuildConfig.DEBUG) {
-            val policy = StrictMode.ThreadPolicy.Builder()
-                .detectDiskReads()
-                .detectDiskWrites()
-                .detectNetwork()
-                .penaltyLog()
-                .build()
-
-            StrictMode.setThreadPolicy(policy)
-        }
-    }
-
     private fun makeString(str: String): String = str.lowercase()
             .split(" ")
             .joinToString("_")
             .replace("&", "and")
 
-
     // TODO Handle errors properly and return a boolean
     private fun getQuestions(categories: String, limit: Int, difficulty: String): Boolean {
-        // a retrofit object
-        val isNetworkAvailable = true // DEBUGGING PU
-
         if (Constants.isNetworkAvailable(this)) {
-            val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
             // create a service for your interface
-            val service: QuestService = retrofit.create(QuestService::class.java)
-
+            val service = ServiceBuilder().buildService(QuestionService::class.java)
             // call the method in the service interface
-            val listCall = service.getQuiz(categories = categories, limit = limit, difficulty = difficulty)
+//            val listCall = service.getQuestions(categories = categories, limit = limit, difficulty = difficulty)
+            val filters = HashMap<String, Any>()
+            filters["categories"] = categories
+            filters["limit"] = limit
+            filters["difficulty"] = difficulty
+            val listCall = service.getQuestions(filters)
             this.showProgressDialog("Please wait ...")
 
             listCall.enqueue(object : Callback<ArrayList<Question>> {
@@ -113,7 +92,12 @@ class FetchActivity : BaseActivity() {
 
                 override fun onFailure(call: Call<ArrayList<Question>>, t: Throwable) {
                     this@FetchActivity.hideProgressDialog()
-                    Log.e("ERRORRRRR", t.message.toString())
+                    if (t is IOException) {
+                        Toast.makeText(this@FetchActivity, "A connection error occurred",Toast.LENGTH_SHORT).show()
+                        Log.e("ERRORRRRR", t.message.toString())
+                    } else {
+                        Log.e("ERRORRRRR", t.message.toString())
+                    }
                     return
                 }
             })
